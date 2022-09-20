@@ -1,16 +1,26 @@
 {
   "name": "diskusage",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Get total diskspace and free diskspace using bindings around platform specific calls.",
   "main": "index.js",
   "typings": "index.d.ts",
   "gypfile": true,
+  "scripts": {
+    "prebuild": "prebuild.cmd -r napi -t 4 -a x64",
+    "install": "prebuild-install -r napi -t 4 -a x64 || node-gyp rebuild"
+  },
   "dependencies": {
     "es6-promise": "^4.2.5",
-    "node-addon-api": "^2.0.0"
+    "node-addon-api": "^2.0.0",
+    "node-gyp": "^9.0.0",
+    "prebuild-install": "^7.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.1"
+    "eslint": "^6.0.1",
+    "prebuild": "^11.0.3"
+  },
+  "binary": {
+    "napi_versions": [4]
   },
   "repository": {
     "type": "git",
